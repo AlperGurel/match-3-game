@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0be9a144d0a1ddf4085afc413df67bbb, type: 3}
+  m_Name: Item Factory - Cube Random
+  m_EditorClassIdentifier: 
+  itemName: Random Cube
+  itemPrefab: {fileID: 0}
+  dataId: rand
+  itemFactories:
+  - {fileID: 11400000, guid: 91c615f8fe64ba5428776cfbbbc4ec9d, type: 2}
+  - {fileID: 11400000, guid: 6996fd7d3207cce448f7f70dd4421765, type: 2}
+  - {fileID: 11400000, guid: 89af2e6399c1f164a8ca5c530fa467c8, type: 2}
+  - {fileID: 11400000, guid: 5a927b22683affb4fa38c1ba24e3f0cb, type: 2}

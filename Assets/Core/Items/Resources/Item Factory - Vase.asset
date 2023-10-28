@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ad21025a40e4347b4f7ddb093edbf8, type: 3}
+  m_Name: Item Factory - Vase
+  m_EditorClassIdentifier: 
+  itemName: Vase
+  itemPrefab: {fileID: 1502669059050378733, guid: 141e01c80a241aa4fab0d493fbc923d7, type: 3}
+  dataId: v
+  objectiveSprite: {fileID: 21300000, guid: 4c17bad3b835bd44f9a56767587a0ab1, type: 3}
+  isObjective: 1
+  canFall: 1
+  SkillData:
+  - {fileID: 11400000, guid: b3fb3d1d37daa1448885a6c9c1ec4af4, type: 2}

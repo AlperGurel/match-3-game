@@ -1,0 +1,22 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Match3
+{
+    [Serializable]
+    public class LevelJsonData
+    {
+
+        #region PROPERTIES
+
+        public int level_number;
+        public int grid_width;
+        public int grid_height;
+        public int move_count;
+        public List<string> grid;
+
+        #endregion
+    }
+}

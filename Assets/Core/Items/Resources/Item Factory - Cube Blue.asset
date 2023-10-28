@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ad21025a40e4347b4f7ddb093edbf8, type: 3}
+  m_Name: Item Factory - Cube Blue
+  m_EditorClassIdentifier: 
+  itemName: Blue Cube
+  itemPrefab: {fileID: 1502669059050378733, guid: 16d5f4ec9f43149408d62566626497fd, type: 3}
+  dataId: b
+  objectiveSprite: {fileID: 21300000, guid: 79e50cee81547e344921e8c4151e1f73, type: 3}
+  isObjective: 0
+  canFall: 1
+  SkillData:
+  - {fileID: 11400000, guid: f41752dcf2c592149b7e199173c6a1ff, type: 2}
+  - {fileID: 11400000, guid: b1b112dba71f538478788e5f2ac4049b, type: 2}
