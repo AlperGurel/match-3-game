@@ -157,6 +157,37 @@ namespace Match3
         {
             return GetEnumerator();
         }
-        
+
+        public List<Cell> GetSurroundingCells(List<Cell> linkedCells)
+        {
+            Vector2Int[] offsets = new[]
+            {
+                new Vector2Int(1, 0), 
+                new Vector2Int(-1, 0),
+                new Vector2Int(0, 1),  
+                new Vector2Int(0, -1)  
+            };
+            
+            List<Cell> surroundingCells = new List<Cell>();
+            foreach (var cell in linkedCells)
+            {
+              
+                foreach (Vector2Int offset in offsets)
+                {
+                    Vector2Int neighborIndex = cell.Index + offset;
+
+                    if (TryGetCell(neighborIndex, out Cell neighborCell))
+                    {
+                        if (!surroundingCells.Contains(neighborCell) && !linkedCells.Contains(neighborCell))
+                        {
+                            surroundingCells.Add(neighborCell);
+                        }
+                    }
+                }  
+            }
+
+            return surroundingCells;
+
+        }
     }
 }

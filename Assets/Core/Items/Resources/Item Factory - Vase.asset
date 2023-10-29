@@ -20,3 +20,4 @@ MonoBehaviour:
   canFall: 1
   SkillData:
   - {fileID: 11400000, guid: b3fb3d1d37daa1448885a6c9c1ec4af4, type: 2}
+  - {fileID: 11400000, guid: 8e8ee0c51d580432485020370410c853, type: 2}

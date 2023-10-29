@@ -23,7 +23,7 @@ namespace Match3
         {
             base.Initialize();
             PlayerData = new PlayerData();
-            PlayerData.CurrentLevel = 7;
+            PlayerData.CurrentLevel = 1;
         }
     }
 }

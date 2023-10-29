@@ -58,6 +58,11 @@ namespace Match3
                         linkSkill.Initialize(baseSkillData);
                         skills.Add(linkSkill);
                         break;
+                    case "BlastSkill":
+                        BlastSkill blastSkill = new BlastSkill();
+                        blastSkill.Initialize(baseSkillData);
+                        skills.Add(blastSkill);
+                        break;
                 }
             }
 

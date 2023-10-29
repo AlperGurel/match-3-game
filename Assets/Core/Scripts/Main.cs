@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,6 +15,8 @@ namespace Match3
 
         [Header("Root")] [SerializeField] private Transform match;
         [SerializeField] private Transform meta;
+
+        [Header("Meta")] [SerializeField] private TextMeshProUGUI playButtonText;
         
         [Header("Board Components")] 
         [SerializeField]
@@ -45,6 +48,7 @@ namespace Match3
         public Transform Match => match;
         public Transform Meta => meta;
         public GameObject GeneratorMaskPrefab => generatorMaskPrefab;
+        public TextMeshProUGUI PlayButtonText => playButtonText;
         #endregion
 
         private void Awake()

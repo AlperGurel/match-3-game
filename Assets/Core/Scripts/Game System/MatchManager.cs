@@ -238,6 +238,7 @@ namespace Match3
 
             if (allObjectivesCompleted)
             {
+                Player.Instance.PlayerData.CurrentLevel++;
                 PopupManager.Instance.ShowPopup<WinScreenPopup>();
             }
         }

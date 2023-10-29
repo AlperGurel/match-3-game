@@ -36,18 +36,40 @@ namespace Match3
          bool didSpendMove = false;
 
          if (selectedItem.FlowTarget != null) return;
-         
+
          if (selectedItem.TryGetSkill(out LinkSkill linkSkill))
          {
-            if (linkSkill.LinkGroup.Count < 2) return;
-            
-            foreach (var cell in linkSkill.LinkGroup)
+            if (linkSkill.LinkGroup.Count > 1)
             {
-               cell.Item.Despawn();
-            }
+               List<Cell> surroundingCells = MatchManager.Instance.Board.GetSurroundingCells(linkSkill.LinkGroup);
+               foreach (var cell in surroundingCells)
+               {
+                  if (cell.Item != null && cell.Item.TryGetSkill(out BlastSkill blastSkill))
+                  {
+                     blastSkill.Blast(BlastType.WEAK);
+                  }
+               }
 
-            didSpendMove = true;
+               foreach (var cell in linkSkill.LinkGroup)
+               {
+                  cell.Item.Despawn();
+               }
+
+               
+            }
          }
+         
+         // if (selectedItem.TryGetSkill(out LinkSkill linkSkill))
+         // {
+         //    if (linkSkill.LinkGroup.Count < 2) return;
+         //    
+         //    foreach (var cell in linkSkill.LinkGroup)
+         //    {
+         //       cell.Item.Despawn();
+         //    }
+         //
+         //    didSpendMove = true;
+         // }
          
          
          // if (selectedItem.TryGetSkill(out HealthSkill healthSkill))
