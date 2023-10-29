@@ -71,6 +71,7 @@
      <Compile Include="Assets/Core/Scripts/Match/Skills/MergeSkill.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Item/TNTItemFactory.cs" />
      <Compile Include="Assets/Core/Scripts/Match/BoardInput.cs" />
+     <Compile Include="Assets/Core/Items/TNT/TNTVisuals.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Skills/HealthSkillData.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModulePhysics2D.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/GameSystem.cs" />
@@ -182,6 +183,7 @@
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
      <Folder Include="Assets/Core/Scripts/Popups" />
      <None Include="Assets/TextMesh Pro/Sprites/EmojiOne.json" />
+     <Folder Include="Assets/Core/Items/Bomb" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2022.3.8f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>

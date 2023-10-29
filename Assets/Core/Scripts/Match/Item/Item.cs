@@ -10,7 +10,7 @@ namespace Match3
     {
         #region COMPONENTS
 
-        private SpriteRenderer spriteRenderer;
+        protected SpriteRenderer spriteRenderer;
         #endregion
         
         #region VARIABLES
@@ -94,6 +94,12 @@ namespace Match3
         public void SetFlowTarget(Cell cell)
         {
             FlowTarget = cell;
+        }
+
+        public virtual void DespawnSilent()
+        {
+            Cell.SetItem(null);
+            GameObject.Destroy(GameObject);
         }
     }
 }

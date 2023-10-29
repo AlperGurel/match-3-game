@@ -42,14 +42,10 @@ namespace Match3
          selectedItem.TryGetSkill(out MergeSkill mergeSkill);
 
 
-         if (selectedItem is TNTItem && linkSkill.LinkGroup.Count == 1)
+         if (selectedItem is TNTItem tntItem && linkSkill.LinkGroup.Count == 1)
          {
-            selectedItem.Despawn();
+            tntItem.Explode(3);
             
-            //start playing bomb animation
-            //block all impacted cells properly
-            //despawn bomb item
-            //timely strong blast impacted cells
          }
          
 
@@ -61,11 +57,13 @@ namespace Match3
             if (linkSkill.LinkGroup.Count >= mergeSkill.MergeCount)
             {
                canMerge = true;
-               
-               List<Cell> surroundingCells = MatchManager.Instance.Board.GetSurroundingCells(linkSkill.LinkGroup);
 
-               if (selectedItem.Id != "t")
+               bool tntMerge = selectedItem is TNTItem;
+
+               if (!tntMerge)
                {
+                  List<Cell> surroundingCells = MatchManager.Instance.Board.GetSurroundingCells(linkSkill.LinkGroup);
+                  
                   foreach (var cell in surroundingCells)
                   {
                      if ( cell.Item != null && cell.Item.TryGetSkill(out BlastSkill blastSkill))
@@ -73,16 +71,29 @@ namespace Match3
                         blastSkill.Blast(BlastType.WEAK);
                      }
                   }
+                  
+                  foreach (var cell in linkSkill.LinkGroup)
+                  {
+                     cell.Item.Despawn();
+                  }
+
+                  var createdItemId = mergeSkill.ItemToCreate;
+                  MatchManager.Instance.GenerateItemAt(selectedItem.Cell, createdItemId, true);
+               }
+               
+               else
+               {
+                  foreach (var cell in linkSkill.LinkGroup)
+                  {
+                     if (cell.Item != selectedItem)
+                     {
+                        selectedItem.DespawnSilent();
+                     }
+                  }
+                  
+                   ((TNTItem)selectedItem).Explode(4);
                }
 
-               foreach (var cell in linkSkill.LinkGroup)
-               {
-                  cell.Item.Despawn();
-               }
-               
-               
-               var createdItemId = mergeSkill.ItemToCreate;
-               MatchManager.Instance.GenerateItemAt(selectedItem.Cell, createdItemId, true);
    
             }
          }

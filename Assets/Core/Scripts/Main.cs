@@ -21,7 +21,7 @@ namespace Match3
         private Transform boardTransform;
         [SerializeField] private Transform boardBackground;
         [SerializeField] private GameObject generatorMaskPrefab;
-
+        [SerializeField] private Transform matchCameraTransform;
 
         [Header("Match UI Components")] 
         [SerializeField]
@@ -35,6 +35,7 @@ namespace Match3
 
         #region PROPERTIES
 
+        public Transform MatchCameraTransform => matchCameraTransform;
         public Transform BoardTransform => boardTransform;
         public Transform BoardBackground => boardBackground;
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Match3
@@ -192,7 +193,66 @@ namespace Match3
             }
 
             return surroundingCells;
+        }
 
+        public List<Cell> GetCellsAtRadius(Vector2Int centerIndex, int radius)
+        {
+            //https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
+            
+            List<Vector2Int> indexesOnPerimeter = new List<Vector2Int>();
+
+            int x = radius;
+            int y = 0;
+            int radiusError = 1 - x;
+
+            while (x >= y)
+            {
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + x, centerIndex.y + y));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - x, centerIndex.y + y));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - x, centerIndex.y - y));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + x, centerIndex.y - y));
+
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + y, centerIndex.y + x));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - y, centerIndex.y + x));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - y, centerIndex.y - x));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + y, centerIndex.y - x));
+
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + x, centerIndex.y + y + 1));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - x, centerIndex.y + y + 1));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - x, centerIndex.y - y - 1));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + x, centerIndex.y - y - 1));
+
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + y + 1, centerIndex.y + x));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - y - 1, centerIndex.y + x));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x - y - 1, centerIndex.y - x));
+                indexesOnPerimeter.Add(new Vector2Int(centerIndex.x + y + 1, centerIndex.y - x));
+
+                
+                y++;
+
+                if (radiusError < 0)
+                {
+                    radiusError += 2 * y + 1;
+                }
+                else
+                {
+                    x--;
+                    radiusError += 2 * (y - x) + 1;
+                }
+            }
+            
+
+            return indexesOnPerimeter.Select(index =>
+            {
+                if (TryGetCell(index, out Cell cell))
+                {
+                    return cell;
+                }
+                else
+                {
+                    return null;
+                }
+            }).Where(cell => cell != null).Distinct().ToList();
         }
     }
 }

@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 129a8bbede4c047a3b7e8c3db404480c, type: 2}
   - {fileID: 11400000, guid: 38b033b52dbb6459db83e1c3906b3f0e, type: 2}
   - {fileID: 11400000, guid: 2c29214664ebe4d56993f917139c84d0, type: 2}
+  bombPrefab: {fileID: 1502669059050378733, guid: 255d734e8f7024467804032034cf7b33, type: 3}

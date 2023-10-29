@@ -36,6 +36,9 @@ namespace  Match3
                 GenerateNewItems();
                 
                 MarkCellsForFlow();
+                
+                BoardLink.Instance.UpdateLinks();
+                MergeLink.Instance.UpdateMergeLinkSprites();
             }
         }
         
@@ -70,6 +73,7 @@ namespace  Match3
 
         public void Update()
         {
+
             var shouldFlow = MatchManager.Instance.Board.Where(x => x.Item != null && x.Item.FlowTarget != null).ToList();
             if (IsAnyItemFalling == false && shouldFlow.Count > 0)
             {
@@ -117,10 +121,14 @@ namespace  Match3
                         if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(columnIndex, i),
                                 out Cell potentialTarget))
                         {
-                            if (potentialTarget.Item != null && !potentialTarget.Item.CanFall && !potentialTarget.FlowBlocked)
+                            if (potentialTarget.Item != null && !potentialTarget.Item.CanFall)
                             {
                                 blockedIndex = new Vector2Int(columnIndex, i);
-                            } else if (potentialTarget.Item == null)
+                            }else if (potentialTarget.FlowBlocked)
+                            {
+                                blockedIndex = new Vector2Int(columnIndex, i);
+                            }
+                            else if (potentialTarget.Item == null)
                             {
                                 target = potentialTarget;
                             }

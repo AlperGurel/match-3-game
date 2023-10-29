@@ -17,6 +17,7 @@ namespace Match3
         private int moveCount;
         private Vector3 initialBackgroundPosition;
         private Vector3 initialBoardPosition;
+        private bool isMatchEnd;
         #endregion
 
         #region PROPERTIES
@@ -40,6 +41,7 @@ namespace Match3
 
         public void InitializeBoard()
         {
+            isMatchEnd = false;
             
             MatchLoop.CreateInstance();
             
@@ -70,7 +72,8 @@ namespace Match3
 
         public void RestartMatch()
         {
-            Debug.Log("Restart Match");            
+
+            isMatchEnd = false;
             
             RefreshBoard();
             
@@ -250,8 +253,9 @@ namespace Match3
                 }
             }
 
-            if (allObjectivesCompleted)
+            if (allObjectivesCompleted && !isMatchEnd)
             {
+                isMatchEnd = true;
                 Player.Instance.PlayerData.CurrentLevel++;
                 PopupManager.Instance.ShowPopup<WinScreenPopup>();
                 MetaUI.Instance.UpdateLevelText();

@@ -13,6 +13,7 @@ namespace Match3
         public string ItemToCreate { get; private set; }
         private SpriteRenderer spriteRenderer;
         private Sprite initialSprite;
+        private Animation mergeReadyAnimation;
         #endregion
         
         public void Initialize(IBaseSkillData baseSkillData)
@@ -34,9 +35,19 @@ namespace Match3
             if (merges)
             {
                 spriteRenderer.sprite = MergeSprite;
+
+                if (item is TNTItem tntItem)
+                {
+                    tntItem.StartMergeReadyAnimation();
+                }
             }
             else
             {
+                if (item is TNTItem tntItem)
+                {
+                    tntItem.StopMergeReadyAnimation();
+                }
+                
                 spriteRenderer.sprite = initialSprite;
             }
         }

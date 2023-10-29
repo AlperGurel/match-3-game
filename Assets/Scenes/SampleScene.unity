@@ -3503,6 +3503,7 @@ MonoBehaviour:
   boardTransform: {fileID: 568924747}
   boardBackground: {fileID: 1185834813}
   generatorMaskPrefab: {fileID: 8529600788505603142, guid: 48bfb15b0c8a2e1459d7179d26227d12, type: 3}
+  matchCameraTransform: {fileID: 1405170453}
   objectivePrefab: {fileID: 897033530083321870, guid: 852ca5aef28ef704591ff9cb6d3e228d, type: 3}
   firstRowTransform: {fileID: 160809303}
   secondRowTransform: {fileID: 2115018635}
