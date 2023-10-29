@@ -10,7 +10,6 @@ namespace Match3
 
         private Item item;
         private Board board;
-
         #endregion
 
         #region PROPERTIES
@@ -20,7 +19,8 @@ namespace Match3
         public Vector2 Position { get; private set; }
         public Transform Transform { get; private set; }
         public GameObject GameObject { get; private set; }
-
+        public bool FlowBlocked { get; private set; }
+        
         #endregion
 
         public Cell(Vector2Int index, Board board)
@@ -39,6 +39,11 @@ namespace Match3
         public void SetItem(Item item)
         {
             this.item = item;
+        }
+
+        public void ToggleFlow(bool toggle)
+        {
+            FlowBlocked = !toggle;
         }
     }
 

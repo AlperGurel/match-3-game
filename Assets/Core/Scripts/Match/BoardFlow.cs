@@ -38,6 +38,7 @@ namespace  Match3
                 MarkCellsForFlow();
             }
         }
+        
 
         private void GenerateNewItems()
         {
@@ -47,7 +48,7 @@ namespace  Match3
             {
                 if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(x, yIndex), out Cell cell))
                 {
-                    if (cell.Item == null)
+                    if (cell.Item == null && !cell.FlowBlocked)
                     {
                         var item = randomItemFactory.CreateItem();
                         item.SetSortingOrder(cell.Index.y);
@@ -63,6 +64,7 @@ namespace  Match3
             if (generated)
             {
                 BoardLink.Instance.UpdateLinks();
+                MergeLink.Instance.UpdateMergeLinkSprites();
             }
         }
 
@@ -74,12 +76,14 @@ namespace  Match3
                 IsAnyItemFalling = true;
                 Debug.Log("[BoardFlow] Fall Start");
                 BoardLink.Instance.UpdateLinks();
+                MergeLink.Instance.UpdateMergeLinkSprites();
             } else if (IsAnyItemFalling && shouldFlow.Count == 0)
             {
                 IsAnyItemFalling = false;
                 
                 Debug.Log("[BoardFlow] Fall End");
                 BoardLink.Instance.UpdateLinks();
+                MergeLink.Instance.UpdateMergeLinkSprites();
             }
             
             foreach (var cell in shouldFlow)
@@ -113,7 +117,7 @@ namespace  Match3
                         if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(columnIndex, i),
                                 out Cell potentialTarget))
                         {
-                            if (potentialTarget.Item != null && !potentialTarget.Item.CanFall)
+                            if (potentialTarget.Item != null && !potentialTarget.Item.CanFall && !potentialTarget.FlowBlocked)
                             {
                                 blockedIndex = new Vector2Int(columnIndex, i);
                             } else if (potentialTarget.Item == null)

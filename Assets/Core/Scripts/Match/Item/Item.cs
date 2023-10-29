@@ -77,7 +77,7 @@ namespace Match3
         }
         
 
-        public async void Despawn()
+        public virtual async void Despawn()
         {
             spriteRenderer.enabled = false;
             Cell.SetItem(null);

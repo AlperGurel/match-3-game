@@ -37,7 +37,57 @@ namespace Match3
 
          if (selectedItem.FlowTarget != null) return;
 
-         if (selectedItem.TryGetSkill(out LinkSkill linkSkill))
+
+         selectedItem.TryGetSkill(out LinkSkill linkSkill);
+         selectedItem.TryGetSkill(out MergeSkill mergeSkill);
+
+
+         if (selectedItem is TNTItem && linkSkill.LinkGroup.Count == 1)
+         {
+            selectedItem.Despawn();
+            
+            //start playing bomb animation
+            //block all impacted cells properly
+            //despawn bomb item
+            //timely strong blast impacted cells
+         }
+         
+
+         bool canMerge = false;
+         
+         
+         if (mergeSkill != null && linkSkill != null)
+         {
+            if (linkSkill.LinkGroup.Count >= mergeSkill.MergeCount)
+            {
+               canMerge = true;
+               
+               List<Cell> surroundingCells = MatchManager.Instance.Board.GetSurroundingCells(linkSkill.LinkGroup);
+
+               if (selectedItem.Id != "t")
+               {
+                  foreach (var cell in surroundingCells)
+                  {
+                     if ( cell.Item != null && cell.Item.TryGetSkill(out BlastSkill blastSkill))
+                     {
+                        blastSkill.Blast(BlastType.WEAK);
+                     }
+                  }
+               }
+
+               foreach (var cell in linkSkill.LinkGroup)
+               {
+                  cell.Item.Despawn();
+               }
+               
+               
+               var createdItemId = mergeSkill.ItemToCreate;
+               MatchManager.Instance.GenerateItemAt(selectedItem.Cell, createdItemId, true);
+   
+            }
+         }
+
+         if (!canMerge && linkSkill != null)
          {
             if (linkSkill.LinkGroup.Count > 1)
             {

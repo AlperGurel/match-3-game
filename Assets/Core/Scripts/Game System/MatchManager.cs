@@ -63,6 +63,9 @@ namespace Match3
             BoardLink.InitializeInstance();
             BoardLink.Instance.UpdateLinks();
 
+            MergeLink.CreateInstance();
+            MergeLink.InitializeInstance();
+            MergeLink.Instance.UpdateMergeLinkSprites();
         }
 
         public void RestartMatch()
@@ -130,6 +133,17 @@ namespace Match3
                 createdItem.Transform.localPosition = Vector3.zero;
                 createdItem.SetCell(cell);
             }
+        }
+
+        public void GenerateItemAt(Cell cell, string itemId, bool shouldPlaySpawnAnimation)
+        {
+            var itemFactory = ItemFactoryManager.Instance.GetItemFactory(itemId);
+            if (itemFactory == null) return;
+            Item generatedItem = itemFactory.CreateItem();
+            generatedItem.SetSortingOrder(cell.Index.y);
+            generatedItem.Transform.SetParent(cell.Transform);
+            generatedItem.Transform.localPosition = Vector3.zero;
+            generatedItem.SetCell(cell);
         }
 
         private void RefreshBoard()
@@ -240,6 +254,7 @@ namespace Match3
             {
                 Player.Instance.PlayerData.CurrentLevel++;
                 PopupManager.Instance.ShowPopup<WinScreenPopup>();
+                MetaUI.Instance.UpdateLevelText();
             }
         }
 

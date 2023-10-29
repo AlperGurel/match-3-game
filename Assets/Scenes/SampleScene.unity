@@ -2012,6 +2012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925561261}
+  - component: {fileID: 925561262}
   m_Layer: 0
   m_Name: Meta
   m_TagString: Untagged
@@ -2037,6 +2038,19 @@ Transform:
   - {fileID: 990760694}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925561262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925561260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b399255179ac4f77afa130d22101caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playLevelText: {fileID: 1959365769}
 --- !u!1 &943803627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,7 +3500,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   match: {fileID: 2008204801}
   meta: {fileID: 925561261}
-  playButtonText: {fileID: 1959365769}
   boardTransform: {fileID: 568924747}
   boardBackground: {fileID: 1185834813}
   generatorMaskPrefab: {fileID: 8529600788505603142, guid: 48bfb15b0c8a2e1459d7179d26227d12, type: 3}

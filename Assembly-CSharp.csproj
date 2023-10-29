@@ -49,6 +49,7 @@
      <Compile Include="Assets/Core/Scripts/Match/Item/ItemFactory.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/PopupManager.cs" />
      <Compile Include="Assets/Core/Scripts/Popups/Popup.cs" />
+     <Compile Include="Assets/Core/Scripts/Game System/MergeLink.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleAudio.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Skills/BlastSkillData.cs" />
      <Compile Include="Assets/Core/Scripts/Match/MatchLoop.cs" />
@@ -67,14 +68,18 @@
      <Compile Include="Assets/Core/Scripts/Popups/LevelFailedPopup.cs" />
      <Compile Include="Assets/Core/Scripts/Helper.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Item/Item.cs" />
+     <Compile Include="Assets/Core/Scripts/Match/Skills/MergeSkill.cs" />
+     <Compile Include="Assets/Core/Scripts/Match/Item/TNTItemFactory.cs" />
      <Compile Include="Assets/Core/Scripts/Match/BoardInput.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Skills/HealthSkillData.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModulePhysics2D.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/GameSystem.cs" />
+     <Compile Include="Assets/Core/Scripts/Match/Item/TNTItem.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleUI.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleSprite.cs" />
      <Compile Include="Assets/Core/Scripts/Match/BoardFlow.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Board.cs" />
+     <Compile Include="Assets/Core/Scripts/Meta/MetaUI.cs" />
      <Compile Include="Assets/Core/Scripts/Popups/WinScreenPopup.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/ItemFactoryManager.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleEPOOutline.cs" />
@@ -84,6 +89,7 @@
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleUtils.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Skills/ISkill.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Level.cs" />
+     <Compile Include="Assets/Core/Scripts/Match/Skills/MergeSkillData.cs" />
      <Compile Include="Assets/Core/Scripts/Match/MatchUI.cs" />
      <Folder Include="Assets" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
@@ -108,7 +114,6 @@
      <Folder Include="Assets/CaseStudyAssets/Obstacles" />
      <Folder Include="Assets/TextMesh Pro/Resources/Fonts &amp; Materials" />
      <Folder Include="Assets/CaseStudyAssets" />
-     <Folder Include="Assets/Core/Items/Data" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
      <Folder Include="Assets/CaseStudyAssets/Cubes" />
      <None Include="Assets/Core/Levels/Resources/level_07.json" />
@@ -158,6 +163,7 @@
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
      <None Include="Assets/Core/Levels/Resources/level_02.json" />
      <Folder Include="Assets/CaseStudyAssets/Obstacles/Stone/Particles" />
+     <Folder Include="Assets/Core/Scripts/Meta" />
      <Folder Include="Assets/Core/Levels/Resources" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets/Core/Levels/Resources/level_10.json" />

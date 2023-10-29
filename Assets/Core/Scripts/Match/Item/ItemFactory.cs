@@ -13,12 +13,12 @@ namespace Match3
     {
         #region VARIABLES
 
-        [SerializeField] private string itemName;
+        [SerializeField] protected string itemName;
         [SerializeField] private GameObject itemPrefab;
-        [SerializeField] private string dataId;
+        [SerializeField] protected string dataId;
         [SerializeField] private Sprite objectiveSprite;
         [SerializeField] private bool isObjective;
-        [SerializeField] private bool canFall;
+        [SerializeField] protected bool canFall;
         [SerializeField] public List<ScriptableObject> SkillData;
         #endregion
 
@@ -40,7 +40,7 @@ namespace Match3
             return item;
         }
 
-        private List<ISkill> GetSkills()
+        protected List<ISkill> GetSkills()
         {
             var skills = new List<ISkill>();
             foreach (var skillData in SkillData)
@@ -62,6 +62,11 @@ namespace Match3
                         BlastSkill blastSkill = new BlastSkill();
                         blastSkill.Initialize(baseSkillData);
                         skills.Add(blastSkill);
+                        break;
+                    case "MergeSkill":
+                        MergeSkill mergeSkill = new MergeSkill();
+                        mergeSkill.Initialize(baseSkillData);
+                        skills.Add(mergeSkill);
                         break;
                 }
             }
