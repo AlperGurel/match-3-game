@@ -124,7 +124,7 @@ namespace Match3
 
          if (didSpendMove)
          {
-            //MatchManager.Instance.SpendMove();
+            MatchManager.Instance.SpendMove();
          }
          else
          {

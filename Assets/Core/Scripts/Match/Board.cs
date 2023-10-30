@@ -256,5 +256,22 @@ namespace Match3
             }).Where(cell => cell != null).Distinct().ToList();
         }
         
+        public List<Cell> GetColumnCells(int index)
+        {
+            List<Cell> cellsInColumn = new List<Cell>();
+
+            foreach (var kvp in boardGrid)
+            {
+                if (kvp.Key.x == index)
+                {
+                    cellsInColumn.Add(kvp.Value);
+                }
+            }
+            
+            cellsInColumn.Sort((cell1, cell2) => cell1.Index.y.CompareTo(cell2.Index.y));
+
+            return cellsInColumn;
+        }
+        
     }
 }

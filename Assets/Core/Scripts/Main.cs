@@ -86,8 +86,9 @@ namespace Match3
             MatchManager.Instance.UnloadMatch();
         }
 
-        public void LoadMatch()
+        public async void LoadMatch()
         {
+            await Waiter.WaitForSeconds(0.2f);
             meta.gameObject.SetActive(false);
             match.gameObject.SetActive(true);
             MatchManager.Instance.InitializeBoard();

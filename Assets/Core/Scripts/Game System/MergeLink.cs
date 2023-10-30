@@ -30,5 +30,23 @@ namespace Match3
                 mergeSkill.UpdateMergeSprite(true);
             }
         }
+
+        public void ResetMergeLinkSprites(List<int> columns)
+        {
+            var board = MatchManager.Instance.Board;
+
+            foreach (var index in columns)
+            {
+                var cells = board.GetColumnCells(index);
+            
+                foreach (var cell in cells)
+                {
+                    if(cell.Item == null) continue;
+                    if(!cell.Item.TryGetSkill(out MergeSkill mergeSkill)) continue;
+                    mergeSkill.UpdateMergeSprite(false);
+                }
+            }
+        
+        }
     }
 }

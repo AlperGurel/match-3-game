@@ -14,6 +14,7 @@ namespace  Match3
         [SerializeField] private float MaxVelocity = 1;
 
         private List<Item> fallingItems;
+        private List<Item> newGeneratedItems;
         private ItemFactory randomItemFactory;
         private bool isFallBegin;
         #endregion
@@ -21,6 +22,7 @@ namespace  Match3
         private void Awake()
         {
             fallingItems = new List<Item>();
+            newGeneratedItems = new List<Item>();
         }
 
         private void Start()
@@ -47,54 +49,71 @@ namespace  Match3
 
         private void GenerateNewItems()
         {
-            return;
-            bool generated = false;
             int yIndex = MatchManager.Instance.Board.YBoundaries.y;
             for (int x = MatchManager.Instance.Board.XBoundaries.x; x <= MatchManager.Instance.Board.XBoundaries.y; x++)
             {
                 if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(x, yIndex), out Cell cell))
                 {
-                    if (cell.Item == null && !cell.FlowBlocked)
+                    if (cell.Item == null && !cell.FlowBlocked && cell.IncomingItem == null)
                     {
-                        
-                        
-                        
-                        Cell lastTarget = null;
-                        for (int y = MatchManager.Instance.Board.YBoundaries.x; y < yIndex; y++)
-                        {
-                            if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(x, y), out Cell pt))
-                            {
-                                if (pt.Item == null && pt.IncomingItem == null)
-                                {
-                                    
-                                    lastTarget = pt;
-                                }
-                                //cell should be empty
-                                //cell should not have incoming object
-                            }
-                        }
-
-                        if (lastTarget != null)
-                        {
-                            var item = randomItemFactory.CreateItem();
-                            item.SetSortingOrder(lastTarget.Index.y);
-                            item.Transform.SetParent(lastTarget.Transform);
-                            item.SetCell(lastTarget);
-                            item.Transform.position =   new Vector3(0, 1.2f, 0);
-                            item.SetFlowTarget(lastTarget);
-                            generated = true;
-                        }
-                        
-                
+                        var item = randomItemFactory.CreateItem();
+                        item.SetFlowTarget(cell);
+                        item.Transform.position = cell.Transform.position + new Vector3(0, 1.2f, 0);
+                        newGeneratedItems.Add(item);
                     }
+          
                 }
             }
 
-            if (generated)
-            {
-                BoardLink.Instance.UpdateLinks();
-                MergeLink.Instance.UpdateMergeLinkSprites();
-            }
+
+            
+            // bool generated = false;
+            // int yIndex = MatchManager.Instance.Board.YBoundaries.y;
+            // for (int x = MatchManager.Instance.Board.XBoundaries.x; x <= MatchManager.Instance.Board.XBoundaries.y; x++)
+            // {
+            //     if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(x, yIndex), out Cell cell))
+            //     {
+            //         if (cell.Item == null && !cell.FlowBlocked)
+            //         {
+            //             
+            //             
+            //             
+            //             Cell lastTarget = null;
+            //             for (int y = MatchManager.Instance.Board.YBoundaries.x; y < yIndex; y++)
+            //             {
+            //                 if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(x, y), out Cell pt))
+            //                 {
+            //                     if (pt.Item == null && pt.IncomingItem == null)
+            //                     {
+            //                         
+            //                         lastTarget = pt;
+            //                     }
+            //                     //cell should be empty
+            //                     //cell should not have incoming object
+            //                 }
+            //             }
+            //
+            //             if (lastTarget != null)
+            //             {
+            //                 var item = randomItemFactory.CreateItem();
+            //                 item.SetSortingOrder(lastTarget.Index.y);
+            //                 item.Transform.SetParent(lastTarget.Transform);
+            //                 item.SetCell(lastTarget);
+            //                 item.Transform.position =   new Vector3(0, 1.2f, 0);
+            //                 item.SetFlowTarget(lastTarget);
+            //                 generated = true;
+            //             }
+            //             
+            //     
+            //         }
+            //     }
+            // }
+            //
+            // if (generated)
+            // {
+            //     BoardLink.Instance.UpdateLinks();
+            //     MergeLink.Instance.UpdateMergeLinkSprites();
+            // }
         }
 
         public void Update()
@@ -102,20 +121,21 @@ namespace  Match3
             if (MatchLoop.Instance.IsMatchActive)
             {
                 UpdateFallingItems();
-            }
+           
 
-            if (!isFallBegin)
-            {
-                if (fallingItems.Count > 0)
+                if (!isFallBegin)
                 {
-                    OnFallBegin();
+                    if (fallingItems.Count > 0)
+                    {
+                        OnFallBegin();
+                    }
                 }
-            }
-            else
-            {
-                if (fallingItems.Count == 0)
+                else
                 {
-                    OnFallEnd();
+                    if (fallingItems.Count == 0)
+                    {
+                        OnFallEnd();
+                    }
                 }
             }
         }
@@ -125,8 +145,12 @@ namespace  Match3
             Debug.Log("On Fall Begin");
             isFallBegin = true;
             
+            
+            
             BoardLink.Instance.UpdateLinks();
-            MergeLink.Instance.UpdateMergeLinkSprites();
+
+            var falllingColumns = fallingItems.Select(item => item.FlowTarget.Index.x).Distinct().ToList();
+            MergeLink.Instance.ResetMergeLinkSprites(falllingColumns);
         }
 
         private void OnFallEnd()
@@ -142,6 +166,17 @@ namespace  Match3
         private void UpdateFallingItems()
         {
             var shouldStartFlow = MatchManager.Instance.Board.Where(x => x.Item != null && x.Item.FlowTarget != null && !x.Item.IsFalling).ToList();
+
+            foreach (var item in newGeneratedItems)
+            {
+                item.IsFalling = true;
+                item.SetSortingOrder(item.FlowTarget.Index.y);
+                if (!fallingItems.Contains(item))
+                {
+                    fallingItems.Add(item);
+                }
+            }
+            newGeneratedItems.Clear();
             
             foreach (var cell in shouldStartFlow)
             {
