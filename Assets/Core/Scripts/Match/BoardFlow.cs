@@ -12,12 +12,10 @@ namespace  Match3
         #region VARIABLES
 
         [SerializeField] private float MaxVelocity = 1;
-        [SerializeField] private float MaxAcceleration = 0.3f;
-        [SerializeField] private float AccelerationIncrease = 0.2f;
-        
+
         private List<Item> fallingItems;
-        private bool IsAnyItemFalling;
         private ItemFactory randomItemFactory;
+        private bool isFallBegin;
         #endregion
 
         private void Awake()
@@ -42,10 +40,7 @@ namespace  Match3
                 MarkCellsForFlow();
 
                 GenerateNewItems();
-                
-                
-                BoardLink.Instance.UpdateLinks();
-                MergeLink.Instance.UpdateMergeLinkSprites();
+          
             }
         }
         
@@ -104,24 +99,50 @@ namespace  Match3
 
         public void Update()
         {
-            
-            var shouldStartFlow = MatchManager.Instance.Board.Where(x => x.Item != null && x.Item.FlowTarget != null && !x.Item.IsFalling).ToList();
-            // if (IsAnyItemFalling == false && shouldFlow.Count > 0)
-            // {
-            //     IsAnyItemFalling = true;
-            //     Debug.Log("[BoardFlow] Fall Start");
-            //     BoardLink.Instance.UpdateLinks();
-            //     MergeLink.Instance.UpdateMergeLinkSprites();
-            // } else if (IsAnyItemFalling && shouldFlow.Count == 0)
-            // {
-            //     IsAnyItemFalling = false;
-            //     
-            //     Debug.Log("[BoardFlow] Fall End");
-            //     BoardLink.Instance.UpdateLinks();
-            //     MergeLink.Instance.UpdateMergeLinkSprites();
-            // }
-            
+            if (MatchLoop.Instance.IsMatchActive)
+            {
+                UpdateFallingItems();
+            }
 
+            if (!isFallBegin)
+            {
+                if (fallingItems.Count > 0)
+                {
+                    OnFallBegin();
+                }
+            }
+            else
+            {
+                if (fallingItems.Count == 0)
+                {
+                    OnFallEnd();
+                }
+            }
+        }
+
+        private void OnFallBegin()
+        {
+            Debug.Log("On Fall Begin");
+            isFallBegin = true;
+            
+            BoardLink.Instance.UpdateLinks();
+            MergeLink.Instance.UpdateMergeLinkSprites();
+        }
+
+        private void OnFallEnd()
+        {
+            Debug.Log("On Fall End");
+            isFallBegin = false;
+                  
+                
+            BoardLink.Instance.UpdateLinks();
+            MergeLink.Instance.UpdateMergeLinkSprites();
+        }
+
+        private void UpdateFallingItems()
+        {
+            var shouldStartFlow = MatchManager.Instance.Board.Where(x => x.Item != null && x.Item.FlowTarget != null && !x.Item.IsFalling).ToList();
+            
             foreach (var cell in shouldStartFlow)
             {
                 cell.Item.IsFalling = true;
@@ -130,11 +151,8 @@ namespace  Match3
                 {
                     fallingItems.Add(cell.Item);
                 }
-
-                var item = cell.Item;
+                
                 cell.Item.LeaveCell();
-                item.SetCell(item.FlowTarget);
-                item.GameObject.transform.SetParent(item.FlowTarget.Transform);
             }
 
             for (int index = fallingItems.Count - 1; index >= 0; index--)
@@ -145,31 +163,19 @@ namespace  Match3
                     fallingItems.Remove(item);
                     continue;
                 }
-
-                item.Acceleration += Time.deltaTime * AccelerationIncrease;
-                item.Acceleration = Mathf.Min(item.Acceleration, MaxAcceleration);
-                item.Velocity += Time.deltaTime * item.Acceleration;
-                item.Velocity = Mathf.Min(item.Velocity, MaxVelocity);
                 
-                //Find the velocity of below item
-                Vector2Int belowIndex = item.Cell.Index + Vector2Int.down;
-                if (MatchManager.Instance.Board.TryGetCell(belowIndex, out Cell belowCell))
-                {
-                    if (belowCell.Item != null && belowCell.Item.IsFalling)
-                    {
-                        item.Velocity = Mathf.Max(item.Velocity, belowCell.Item.Velocity);
-                    }
-                }
+
+                item.Velocity = Time.deltaTime * 13;
                 
                 Vector3 step = new Vector3(0, item.Velocity, 0);
-                item.Transform.localPosition -= step;
+                item.Transform.position -= step;
 
-                if (item.Transform.localPosition.y < 0)
+                if (item.Transform.position.y < item.FlowTarget.Transform.position.y)
                 {
                     item.Velocity = 0;
-                    item.Acceleration = 0;
+                    item.SetCell(item.FlowTarget);
+                    item.GameObject.transform.SetParent(item.FlowTarget.Transform);
                     item.Transform.localPosition = Vector3.zero;
-    
                     item.IsFalling = false;
                     item.SetFlowTarget(null);
                     fallingItems.Remove(item);
@@ -190,36 +196,32 @@ namespace  Match3
                 {
                     if(cell.Item == null) continue;
 
-                    // if (!cell.Item.IsFalling)
+                    Cell target = null;
+                    for (int i = cell.Index.y; i > blockedIndex.y; i--)
                     {
-                        Cell target = null;
-                        for (int i = cell.Index.y; i > blockedIndex.y; i--)
+                        if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(columnIndex, i),
+                                out Cell potentialTarget))
                         {
-                            if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(columnIndex, i),
-                                    out Cell potentialTarget))
+                            if (potentialTarget.Item != null && !potentialTarget.Item.CanFall)
                             {
-                                if (potentialTarget.Item != null && !potentialTarget.Item.CanFall)
-                                {
-                                    blockedIndex = new Vector2Int(columnIndex, i);
-                                }else if (potentialTarget.FlowBlocked)
-                                {
-                                    blockedIndex = new Vector2Int(columnIndex, i);
-                                }
-                                else if (potentialTarget.Item == null)
-                                {
-                                    target = potentialTarget;
-                                }
+                                blockedIndex = new Vector2Int(columnIndex, i);
+                            }else if (potentialTarget.FlowBlocked || potentialTarget.IncomingItem != null)
+                            {
+                                blockedIndex = new Vector2Int(columnIndex, i);
                             }
-                        }
-
-                        if (target != null)
-                        {
-                            blockedIndex = target.Index;
-                            cell.Item.SetFlowTarget(target);
-                            cell.Item.UpdatedFlowTarget = target;
+                            else if (potentialTarget.Item == null)
+                            {
+                                target = potentialTarget;
+                            }
                         }
                     }
 
+                    if (target != null)
+                    {
+                        blockedIndex = target.Index;
+                        cell.Item.SetFlowTarget(target);
+                    }
+                        
                 }
             }
         }

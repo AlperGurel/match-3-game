@@ -27,12 +27,10 @@ namespace Match3
         public string Id { get; private set; }
         public Cell Cell { get; private set; }
         public Cell FlowTarget { get; private set; }
-        public Cell UpdatedFlowTarget { get; set; }
         public bool CanFall { get; private set; }
         public float Velocity { get; set; }
         public bool IsFalling { get; set; }
-        public float Acceleration { get; set; }
-        public bool CreatedByGenerator { get; set; }
+
 
         #endregion
 
