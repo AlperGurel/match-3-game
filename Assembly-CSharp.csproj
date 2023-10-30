@@ -75,6 +75,7 @@
      <Compile Include="Assets/Core/Scripts/Match/Item/TNTItem.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleUI.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleSprite.cs" />
+     <Compile Include="Assets/Core/Scripts/Other/ShakeOnClick.cs" />
      <Compile Include="Assets/Core/Scripts/Match/BoardFlow.cs" />
      <Compile Include="Assets/Core/Scripts/Other/Helper.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Board.cs" />
