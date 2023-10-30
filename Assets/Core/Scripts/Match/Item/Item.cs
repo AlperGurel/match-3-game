@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -26,7 +27,13 @@ namespace Match3
         public string Id { get; private set; }
         public Cell Cell { get; private set; }
         public Cell FlowTarget { get; private set; }
+        public Cell UpdatedFlowTarget { get; set; }
         public bool CanFall { get; private set; }
+        public float Velocity { get; set; }
+        public bool IsFalling { get; set; }
+        public float Acceleration { get; set; }
+        public bool CreatedByGenerator { get; set; }
+
         #endregion
 
         public Item(string id, string name, GameObject gameObject, List<ISkill> skills, bool canFall)
@@ -57,6 +64,7 @@ namespace Match3
 
         public void LeaveCell()
         {
+            if (Cell == null) return;
             Cell.SetItem(null);
             Cell = null;
         }
@@ -94,12 +102,21 @@ namespace Match3
         public void SetFlowTarget(Cell cell)
         {
             FlowTarget = cell;
+            if (cell != null)
+            {
+                cell.IncomingItem = this;
+            }
         }
 
         public virtual void DespawnSilent()
         {
             Cell.SetItem(null);
             GameObject.Destroy(GameObject);
+        }
+
+        public void PlayInteractAnimation()
+        {
+            GameObject.transform.DOShakeRotation(0.15f, new Vector3(0, 0, 20), fadeOut:true);
         }
     }
 }

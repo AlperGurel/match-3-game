@@ -21,7 +21,8 @@ namespace Match3
         public Transform Transform { get; private set; }
         public GameObject GameObject { get; private set; }
         public bool FlowBlocked { get; private set; }
-        
+        public Item IncomingItem { get; set; }
+
         #endregion
 
         public Cell(Vector2Int index, Board board)
@@ -254,5 +255,6 @@ namespace Match3
                 }
             }).Where(cell => cell != null).Distinct().ToList();
         }
+        
     }
 }

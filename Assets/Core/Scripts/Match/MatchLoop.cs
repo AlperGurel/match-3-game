@@ -45,7 +45,7 @@ namespace Match3
          if (selectedItem is TNTItem tntItem && linkSkill.LinkGroup.Count == 1)
          {
             tntItem.Explode(3);
-            
+            didSpendMove = true;
          }
          
 
@@ -94,7 +94,8 @@ namespace Match3
                    ((TNTItem)selectedItem).Explode(4);
                }
 
-   
+               didSpendMove = true;
+
             }
          }
 
@@ -116,31 +117,18 @@ namespace Match3
                   cell.Item.Despawn();
                }
 
-               
+               didSpendMove = true;
             }
          }
          
-         // if (selectedItem.TryGetSkill(out LinkSkill linkSkill))
-         // {
-         //    if (linkSkill.LinkGroup.Count < 2) return;
-         //    
-         //    foreach (var cell in linkSkill.LinkGroup)
-         //    {
-         //       cell.Item.Despawn();
-         //    }
-         //
-         //    didSpendMove = true;
-         // }
-         
-         
-         // if (selectedItem.TryGetSkill(out HealthSkill healthSkill))
-         // {
-         //    healthSkill.ReduceHealth();
-         // }
 
          if (didSpendMove)
          {
-            MatchManager.Instance.SpendMove();
+            //MatchManager.Instance.SpendMove();
+         }
+         else
+         {
+            selectedItem.PlayInteractAnimation();
          }
          
       }

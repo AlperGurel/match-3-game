@@ -253,13 +253,13 @@ namespace Match3
                 }
             }
 
-            if (allObjectivesCompleted && !isMatchEnd)
-            {
-                isMatchEnd = true;
-                Player.Instance.PlayerData.CurrentLevel++;
-                PopupManager.Instance.ShowPopup<WinScreenPopup>();
-                MetaUI.Instance.UpdateLevelText();
-            }
+            // if (allObjectivesCompleted && !isMatchEnd)
+            // {
+            //     isMatchEnd = true;
+            //     Player.Instance.PlayerData.CurrentLevel++;
+            //     PopupManager.Instance.ShowPopup<WinScreenPopup>();
+            //     MetaUI.Instance.UpdateLevelText();
+            // }
         }
 
         public void SpendMove()
