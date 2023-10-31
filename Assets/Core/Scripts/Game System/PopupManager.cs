@@ -22,6 +22,15 @@ public class PopupManager : SingletonGameSystem<PopupManager>
     public void ActivateBackground(bool toggle)
     {
         backgroundImage.gameObject.SetActive(toggle);
+        if (toggle)
+        {
+            backgroundImage.DOFade(0, 0);
+            backgroundImage.DOFade(0.6f, 0.4f);
+        }
+        else
+        {
+            backgroundImage.DOFade(0, 0);
+        }
     }
 
     public void ShowPopup<T>() where T : Popup
@@ -33,6 +42,18 @@ public class PopupManager : SingletonGameSystem<PopupManager>
         {
             ActivateBackground(true);
             GameObject popupInstance = GameObject.Instantiate(popupPrefab, Main.Instance.PopupCanvas);
+            popupInstance.SetActive(false);
+            
+            var initialScale = popupInstance.transform.localScale;
+            popupInstance.transform.localScale = initialScale * 0.7f;
+            var initialPos = popupInstance.transform.position;
+            popupInstance.transform.position += (Vector3.down * 10);
+            popupInstance.SetActive(true);
+            
+            
+            popupInstance.transform.DOMove(initialPos, 0.3f);
+            popupInstance.transform.DOScale(initialScale, 0.2f).SetEase(Ease.InOutBounce);
+
         }
     } 
 }

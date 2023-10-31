@@ -64,56 +64,7 @@ namespace  Match3
           
                 }
             }
-
-
             
-            // bool generated = false;
-            // int yIndex = MatchManager.Instance.Board.YBoundaries.y;
-            // for (int x = MatchManager.Instance.Board.XBoundaries.x; x <= MatchManager.Instance.Board.XBoundaries.y; x++)
-            // {
-            //     if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(x, yIndex), out Cell cell))
-            //     {
-            //         if (cell.Item == null && !cell.FlowBlocked)
-            //         {
-            //             
-            //             
-            //             
-            //             Cell lastTarget = null;
-            //             for (int y = MatchManager.Instance.Board.YBoundaries.x; y < yIndex; y++)
-            //             {
-            //                 if (MatchManager.Instance.Board.TryGetCell(new Vector2Int(x, y), out Cell pt))
-            //                 {
-            //                     if (pt.Item == null && pt.IncomingItem == null)
-            //                     {
-            //                         
-            //                         lastTarget = pt;
-            //                     }
-            //                     //cell should be empty
-            //                     //cell should not have incoming object
-            //                 }
-            //             }
-            //
-            //             if (lastTarget != null)
-            //             {
-            //                 var item = randomItemFactory.CreateItem();
-            //                 item.SetSortingOrder(lastTarget.Index.y);
-            //                 item.Transform.SetParent(lastTarget.Transform);
-            //                 item.SetCell(lastTarget);
-            //                 item.Transform.position =   new Vector3(0, 1.2f, 0);
-            //                 item.SetFlowTarget(lastTarget);
-            //                 generated = true;
-            //             }
-            //             
-            //     
-            //         }
-            //     }
-            // }
-            //
-            // if (generated)
-            // {
-            //     BoardLink.Instance.UpdateLinks();
-            //     MergeLink.Instance.UpdateMergeLinkSprites();
-            // }
         }
 
         public void Update()

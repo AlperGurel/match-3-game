@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Match3
 {
    public class MatchLoop : SingletonGameSystem<MatchLoop>
    {
+      
       #region PROPERTIES
       public bool IsMatchActive { get; private set; }
       #endregion
@@ -71,12 +74,27 @@ namespace Match3
                         blastSkill.Blast(BlastType.WEAK);
                      }
                   }
+
+                  List<Task> tweenTasks = new List<Task>();
+                  foreach (var cell in linkSkill.LinkGroup)
+                  {
+                     cell.ToggleFlow(false);
+                     var spriteItem = cell.Item.Transform.GetChild(0);
+                     cell.Item.SetSortingOrder(10);
+                     tweenTasks.Add(spriteItem.DOMove(selectedItem.Transform.position, 0.3f).AsyncWaitForCompletion());
+                     // tweenTasks.Add(spriteItem.DOScale(new Vector3(0.2f, 0.2f, 0), 0.1f).SetEase(Ease.OutElastic).AsyncWaitForCompletion());
+                  }
+                  
+                  await Task.WhenAll(tweenTasks);
+                  
                   
                   foreach (var cell in linkSkill.LinkGroup)
                   {
-                     cell.Item.Despawn();
+                     cell.Item.DespawnSilent();
+                     cell.ToggleFlow(true);
                   }
-
+                  
+               
                   var createdItemId = mergeSkill.ItemToCreate;
                   MatchManager.Instance.GenerateItemAt(selectedItem.Cell, createdItemId, true);
                }

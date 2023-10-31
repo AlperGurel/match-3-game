@@ -155,7 +155,7 @@ namespace Match3
             {
                 if (cell.Item != null)
                 {
-                    cell.Item.Despawn();
+                    cell.Item.DespawnSilent();
                 }
                 var itemFactory = ItemFactoryManager.Instance.GetItemFactory(gridItemIds[cell.Index]);
                 if (itemFactory == null)
@@ -262,7 +262,7 @@ namespace Match3
             }
         }
 
-        public void SpendMove()
+        public async void SpendMove()
         {
             moveCount = Mathf.Max(moveCount - 1, 0);
             MatchUI.Instance.UpdateMoveCount(moveCount);
@@ -270,6 +270,7 @@ namespace Match3
             if (moveCount == 0)
             {
                 MatchLoop.Instance.Stop();
+                await Waiter.WaitForSeconds(1f);
                 PopupManager.Instance.ShowPopup<LevelFailedPopup>();
             }
             

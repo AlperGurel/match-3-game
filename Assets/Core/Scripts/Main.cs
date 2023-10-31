@@ -33,6 +33,12 @@ namespace Match3
         [SerializeField] private Transform popupBackground;
         #endregion
 
+        #region VARIABLES
+
+        private bool isLoading;
+        #endregion
+        
+        
         #region PROPERTIES
 
         public Transform MatchCameraTransform => matchCameraTransform;
@@ -50,6 +56,7 @@ namespace Match3
 
         #endregion
 
+        
         private void Awake()
         {
             Instance = this;
@@ -88,10 +95,13 @@ namespace Match3
 
         public async void LoadMatch()
         {
+            if (isLoading) return;
+            isLoading = true;
             await Waiter.WaitForSeconds(0.2f);
             meta.gameObject.SetActive(false);
             match.gameObject.SetActive(true);
             MatchManager.Instance.InitializeBoard();
+            isLoading = false;
         }
     }
 }

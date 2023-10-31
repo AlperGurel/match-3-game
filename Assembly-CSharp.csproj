@@ -136,6 +136,7 @@
      <None Include="Assets/Core/Levels/Resources/level_06.json" />
      <Folder Include="Assets/Core/Resources/Levels" />
      <Folder Include="Assets/Core/Items/Vase" />
+     <Folder Include="Assets/Core/Items/TNT/TNT Combo" />
      <Folder Include="Assets/Core/Materials" />
      <None Include="Assets/Core/Levels/Resources/level_05.json" />
      <Folder Include="Assets/CaseStudyAssets/UI" />
@@ -162,6 +163,7 @@
      <Folder Include="Assets/Core/Items/Cube" />
      <Folder Include="Assets/TextMesh Pro/Resources/Style Sheets" />
      <Folder Include="Assets/TextMesh Pro/Fonts" />
+     <Folder Include="Assets/Core/Area" />
      <Folder Include="Assets/CaseStudyAssets/UI/Gameplay" />
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
      <None Include="Assets/Core/Levels/Resources/level_02.json" />
