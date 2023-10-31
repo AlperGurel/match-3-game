@@ -20,11 +20,20 @@ namespace  Match3
             tntVisuals = gameObject.GetComponent<TNTVisuals>();
         }
 
-        public async void Explode(int impactRadius)
+        public async void Explode(bool combo)
         {
              var visuals = GameObject.GetComponent<TNTVisuals>();
              visuals.StopMergeReadyAnimation();
-            
+
+             int radius = 3;
+             
+             if (combo)
+             {
+                 radius = 4;
+                 await visuals.PlayTntComboAnimation();
+             }
+             
+             
             Main.Instance.MatchCameraTransform.DOShakePosition(0.5f, 0.1f);
             var explosion = GameObject.Instantiate(bombPrefab, Cell.Transform);
             spriteRenderer.enabled = false;
@@ -35,16 +44,17 @@ namespace  Match3
                 destroyParticleFx.Play();
             }
             
-            BlastNeighbors(impactRadius);
+            BlastNeighbors(radius);
             
             await Waiter.WaitForSeconds(2f);
             GameObject.Destroy(explosion);
             GameObject.Destroy(GameObject);
         }
+        
 
         public override void Despawn()
         {
-            Explode(3);
+            Explode(false);
             base.Despawn();
         }
         

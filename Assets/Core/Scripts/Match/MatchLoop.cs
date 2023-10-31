@@ -26,7 +26,7 @@ namespace Match3
          IsMatchActive = true;
       }
 
-      public void OnTouchRelease(Cell touchedCell)
+      public async void OnTouchRelease(Cell touchedCell)
       {
          if (!IsMatchActive) return;
          
@@ -44,7 +44,7 @@ namespace Match3
 
          if (selectedItem is TNTItem tntItem && linkSkill.LinkGroup.Count == 1)
          {
-            tntItem.Explode(3);
+            tntItem.Explode(false);
             didSpendMove = true;
          }
          
@@ -87,11 +87,11 @@ namespace Match3
                   {
                      if (cell.Item != selectedItem)
                      {
-                        selectedItem.DespawnSilent();
+                        cell.Item.DespawnSilentAsync(0.4f);
                      }
                   }
                   
-                   ((TNTItem)selectedItem).Explode(4);
+                  ((TNTItem)selectedItem).Explode(true);
                }
 
                didSpendMove = true;

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Match3;
 using UnityEngine;
 
 public class TNTVisuals : MonoBehaviour
@@ -11,9 +13,21 @@ public class TNTVisuals : MonoBehaviour
     [SerializeField] private SpriteRenderer mergeAnimationRenderer;
     [SerializeField] private SpriteRenderer mainSpriteRenderer;
 
+    [Header("TNT + TNT Combo")] [SerializeField]
+    private Animation tntComboAnimation;
+
+    [SerializeField]private  GameObject tntComboAnimObject;
     #endregion
 
 
+    public async Task PlayTntComboAnimation()
+    {
+        tntComboAnimObject.SetActive(true);
+        await Waiter.WaitForSeconds(tntComboAnimation.clip.length);
+        tntComboAnimObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+    }
+
+    
     public void StartMergeReadyAnimation()
     {
         mainSpriteRenderer.enabled = false;

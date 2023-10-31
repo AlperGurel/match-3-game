@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -115,6 +116,13 @@ namespace Match3
         public void PlayInteractAnimation()
         {
             GameObject.transform.DOShakeRotation(0.15f, new Vector3(0, 0, 20), fadeOut:true);
+        }
+
+        public async Task DespawnSilentAsync(float f)
+        {
+            Cell.SetItem(null);
+            await Waiter.WaitForSeconds(f);
+            GameObject.Destroy(GameObject);
         }
     }
 }
