@@ -33,6 +33,9 @@ namespace Match3
         [SerializeField] private Transform popupBackground;
         #endregion
 
+        [Header("Area Tasks")] [SerializeField]
+        private List<AreaTaskObject> areaTasks;
+        
         #region VARIABLES
 
         private bool isLoading;
@@ -41,6 +44,7 @@ namespace Match3
         
         #region PROPERTIES
 
+        public List<AreaTaskObject> AreaTasks => areaTasks;
         public Transform MatchCameraTransform => matchCameraTransform;
         public Transform BoardTransform => boardTransform;
         public Transform BoardBackground => boardBackground;
@@ -76,6 +80,9 @@ namespace Match3
             
             Player.CreateInstance();
             Player.InitializeInstance();
+
+            AreaManager.CreateInstance();
+            AreaManager.InitializeInstance();
 
             MatchManager.CreateInstance();
             MatchManager.InitializeInstance();

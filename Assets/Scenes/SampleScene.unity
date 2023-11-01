@@ -339,6 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 53418500}
   - component: {fileID: 53418501}
+  - component: {fileID: 53418502}
   m_Layer: 0
   m_Name: Task 8
   m_TagString: Untagged
@@ -372,9 +373,22 @@ SortingGroup:
   m_GameObject: {fileID: 53418499}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &53418502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53418499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 633535816}
 --- !u!4 &106854323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8475824831556372011, guid: 25556721284064c639777bdc0afc899f, type: 3}
@@ -390,6 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156093973}
   - component: {fileID: 156093974}
+  - component: {fileID: 156093975}
   m_Layer: 0
   m_Name: Task 2
   m_TagString: Untagged
@@ -406,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 156093972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.54, y: 7.39, z: 0}
+  m_LocalPosition: {x: -1.966, y: 8.534, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -423,9 +438,22 @@ SortingGroup:
   m_GameObject: {fileID: 156093972}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &156093975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156093972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 1718798122}
 --- !u!1 &160809302
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195735808}
   - component: {fileID: 195735809}
+  - component: {fileID: 195735810}
   m_Layer: 0
   m_Name: Task 4
   m_TagString: Untagged
@@ -533,9 +562,22 @@ SortingGroup:
   m_GameObject: {fileID: 195735807}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &195735810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195735807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 960398631}
 --- !u!1001 &196538040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2360,6 +2402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1165505826}
   - component: {fileID: 1165505827}
+  - component: {fileID: 1165505828}
   m_Layer: 0
   m_Name: Task 5
   m_TagString: Untagged
@@ -2393,9 +2436,22 @@ SortingGroup:
   m_GameObject: {fileID: 1165505825}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &1165505828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165505825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 943803627}
 --- !u!1 &1185834812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,6 +3022,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307006761}
   - component: {fileID: 1307006762}
+  - component: {fileID: 1307006763}
   m_Layer: 0
   m_Name: Task 3
   m_TagString: Untagged
@@ -2999,9 +3056,22 @@ SortingGroup:
   m_GameObject: {fileID: 1307006760}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &1307006763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307006760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 4058549}
 --- !u!1 &1370416263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,6 +3082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1370416264}
   - component: {fileID: 1370416265}
+  - component: {fileID: 1370416266}
   m_Layer: 0
   m_Name: Task 1
   m_TagString: Untagged
@@ -3045,9 +3116,22 @@ SortingGroup:
   m_GameObject: {fileID: 1370416263}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &1370416266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370416263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 272156729}
 --- !u!1 &1405170452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3280,17 @@ MonoBehaviour:
   secondRowTransform: {fileID: 2115018635}
   popupCanvas: {fileID: 1851498704}
   popupBackground: {fileID: 1695963314}
+  areaTasks:
+  - {fileID: 1370416266}
+  - {fileID: 156093975}
+  - {fileID: 1307006763}
+  - {fileID: 195735810}
+  - {fileID: 1165505828}
+  - {fileID: 1687796885}
+  - {fileID: 1744932063}
+  - {fileID: 53418502}
+  - {fileID: 1996382560}
+  - {fileID: 1823041342}
 --- !u!1 &1520112250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,9 +3383,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1823041340}
     m_Modifications:
+    - target: {fileID: 803727433156354648, guid: 25556721284064c639777bdc0afc899f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 803727433156354648, guid: 25556721284064c639777bdc0afc899f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1354880761
+      objectReference: {fileID: 0}
     - target: {fileID: 1496064007374298845, guid: 25556721284064c639777bdc0afc899f, type: 3}
       propertyPath: m_Name
       value: Lock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501913627883988438, guid: 25556721284064c639777bdc0afc899f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501913627883988438, guid: 25556721284064c639777bdc0afc899f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1354880761
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899600595199367865, guid: 25556721284064c639777bdc0afc899f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899600595199367865, guid: 25556721284064c639777bdc0afc899f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1354880761
       objectReference: {fileID: 0}
     - target: {fileID: 8475824831556372011, guid: 25556721284064c639777bdc0afc899f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3384,6 +3503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1687796883}
   - component: {fileID: 1687796884}
+  - component: {fileID: 1687796885}
   m_Layer: 0
   m_Name: Task 6
   m_TagString: Untagged
@@ -3417,9 +3537,22 @@ SortingGroup:
   m_GameObject: {fileID: 1687796882}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &1687796885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687796882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 1712548584}
 --- !u!1 &1695963313
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,6 +3863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1744932061}
   - component: {fileID: 1744932062}
+  - component: {fileID: 1744932063}
   m_Layer: 0
   m_Name: Task 7
   m_TagString: Untagged
@@ -3763,9 +3897,22 @@ SortingGroup:
   m_GameObject: {fileID: 1744932060}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &1744932063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744932060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 1520112250}
 --- !u!1 &1787358173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,6 +4059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823041340}
   - component: {fileID: 1823041341}
+  - component: {fileID: 1823041342}
   m_Layer: 0
   m_Name: Task 10
   m_TagString: Untagged
@@ -3945,9 +4093,22 @@ SortingGroup:
   m_GameObject: {fileID: 1823041339}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayer: 3
+  m_SortingOrder: 2
   m_SortAtRoot: 0
+--- !u!114 &1823041342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823041339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 286646257}
 --- !u!4 &1823243313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8475824831556372011, guid: 25556721284064c639777bdc0afc899f, type: 3}
@@ -4133,6 +4294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1996382558}
   - component: {fileID: 1996382559}
+  - component: {fileID: 1996382560}
   m_Layer: 0
   m_Name: Task 9
   m_TagString: Untagged
@@ -4166,9 +4328,22 @@ SortingGroup:
   m_GameObject: {fileID: 1996382557}
   m_Enabled: 1
   m_SortingLayerID: 1354880761
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &1996382560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996382557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25adfd155365642f0b5b7cc9e6e58918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskVisuals: {fileID: 1305305291}
 --- !u!1 &2008204800
 GameObject:
   m_ObjectHideFlags: 0

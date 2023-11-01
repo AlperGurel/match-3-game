@@ -44,6 +44,9 @@ TagManager:
   - name: Area Background
     uniqueID: 3140667047
     locked: 0
+  - name: Area Layer 0
+    uniqueID: 1151402425
+    locked: 0
   - name: Area Layer 1
     uniqueID: 1354880761
     locked: 0

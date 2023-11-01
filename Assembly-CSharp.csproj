@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets/Core/Scripts/Match/Skills/LinkSkillData.cs" />
+     <Compile Include="Assets/Core/Scripts/Meta/TaskButton.cs" />
      <Compile Include="Assets/Core/Scripts/Popups/LevelQuitPopup.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Item/ItemFactory.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/PopupManager.cs" />
@@ -56,6 +57,7 @@
      <Compile Include="Assets/Core/Scripts/Match/MatchLoop.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Skills/LinkSkill.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Skills/BaseSkill.cs" />
+     <Compile Include="Assets/Core/Scripts/Game System/AreaManager.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleUnityVersion.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModulePhysics.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/MatchManager.cs" />
@@ -84,6 +86,7 @@
      <Compile Include="Assets/Core/Scripts/Other/ScaleButton.cs" />
      <Compile Include="Assets/Core/Scripts/Meta/MetaUI.cs" />
      <Compile Include="Assets/Core/Scripts/Popups/WinScreenPopup.cs" />
+     <Compile Include="Assets/Core/Scripts/Meta/AreaTaskObject.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/ItemFactoryManager.cs" />
      <Compile Include="Assets/DOTween/Modules/DOTweenModuleEPOOutline.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/Player.cs" />

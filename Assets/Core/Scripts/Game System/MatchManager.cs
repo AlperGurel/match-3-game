@@ -242,7 +242,7 @@ namespace Match3
             spriteRenderer.size = new Vector2(xSize, ySize);
         }
 
-        public void OnItemDespawn(Item item)
+        public async void OnItemDespawn(Item item)
         {
             if (LevelObjectives.TryGetValue(item.Id, out int remainingObjective))
             {
@@ -263,9 +263,9 @@ namespace Match3
             {
                 isMatchEnd = true;
                 Player.Instance.PlayerData.CurrentLevel++;
-                board.DestroyBoard();
+                await Waiter.WaitForSeconds(0.6f);
                 PopupManager.Instance.ShowPopup<WinScreenPopup>();
-                MetaUI.Instance.UpdateLevelText();
+
             }
         }
 
