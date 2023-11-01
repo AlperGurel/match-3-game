@@ -28,6 +28,11 @@ public class MatchUI : MonoBehaviour
         moveCountText.text = moveCount.ToString();
     }
 
+    public void OnQuitButtonClicked()
+    {
+        PopupManager.Instance.ShowPopup<LevelQuitPopup>();
+    }
+
 
     public void CreateObjectivesUI()
     {

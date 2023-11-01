@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets/Core/Scripts/Match/Skills/LinkSkillData.cs" />
+     <Compile Include="Assets/Core/Scripts/Popups/LevelQuitPopup.cs" />
      <Compile Include="Assets/Core/Scripts/Match/Item/ItemFactory.cs" />
      <Compile Include="Assets/Core/Scripts/Game System/PopupManager.cs" />
      <Compile Include="Assets/Core/Scripts/Popups/Popup.cs" />

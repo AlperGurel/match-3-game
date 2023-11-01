@@ -116,7 +116,7 @@ namespace Match3
             {
                 if (cell.Item != null)
                 {
-                    cell.Item.Despawn();
+                    cell.Item.DespawnSilent();
                 }
                 GameObject.Destroy(cell.GameObject);
                 

@@ -90,6 +90,12 @@ namespace Match3
             BoardLink.Instance.UpdateLinks();
         }
 
+        public void SwitchToArea()
+        {
+            UnloadMatch();
+            Main.Instance.LoadMeta();
+        }
+
         private void PlayLevelStartAnimation()
         {
             Main.Instance.BoardTransform.DOMove(initialBoardPosition, 0f);
@@ -257,6 +263,7 @@ namespace Match3
             {
                 isMatchEnd = true;
                 Player.Instance.PlayerData.CurrentLevel++;
+                board.DestroyBoard();
                 PopupManager.Instance.ShowPopup<WinScreenPopup>();
                 MetaUI.Instance.UpdateLevelText();
             }
