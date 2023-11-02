@@ -13,9 +13,10 @@ namespace  Match3
         }
         
         
-        public override void OnQuit()
+        public override void OnClose()
         {
-            base.OnQuit();
+            MatchManager.Instance.SwitchToArea();
+            base.OnClose();
         }
     }
 }
