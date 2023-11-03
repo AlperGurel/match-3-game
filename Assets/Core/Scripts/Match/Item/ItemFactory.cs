@@ -74,9 +74,9 @@ namespace Match3
             return skills;
         }
 
-        public GameObject CreateObjective(int initialObjectiveCount)
+        public GameObject CreateObjective(int initialObjectiveCount, Transform rowTransform)
         {
-            GameObject objectiveUi = Instantiate(Main.Instance.ObjectivePrefab, Main.Instance.FirstRowTransform);
+            GameObject objectiveUi = Instantiate(Main.Instance.ObjectivePrefab, rowTransform);
             objectiveUi.GetComponent<ObjectiveUI>().Initialize(initialObjectiveCount, objectiveSprite);
             return objectiveUi;
         }

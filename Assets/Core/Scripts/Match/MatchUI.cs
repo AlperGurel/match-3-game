@@ -38,6 +38,9 @@ public class MatchUI : MonoBehaviour
     {
         objectiveUIs.Clear();
         
+        Main.Instance.FirstRowTransform.gameObject.SetActive(false);
+        Main.Instance.SecondRowTransform.gameObject.SetActive(false);
+        
         foreach (Transform children in Main.Instance.FirstRowTransform)
         {
             Destroy(children.gameObject);
@@ -48,13 +51,35 @@ public class MatchUI : MonoBehaviour
             Destroy(children.gameObject);
         }
         
+        int row = 0;
         var objectives = MatchManager.Instance.LevelObjectives;
         foreach (var kv in objectives)
         {
+            Transform rowTransform = null;
+            if (row % 2 ==  0)
+            {
+                rowTransform = Main.Instance.FirstRowTransform;
+            }
+            else
+            {
+                rowTransform = Main.Instance.SecondRowTransform;
+            }
             var factory = ItemFactoryManager.Instance.GetItemFactory(kv.Key);
-            var objectiveUI = factory.CreateObjective(kv.Value);
+            var objectiveUI = factory.CreateObjective(kv.Value, rowTransform);
             objectiveUIs[kv.Key] = objectiveUI;
+            row++;
         }
+
+        if (Main.Instance.FirstRowTransform.childCount > 0)
+        {
+            Main.Instance.FirstRowTransform.gameObject.SetActive(true);
+        }
+        
+        if (Main.Instance.SecondRowTransform.childCount > 0)
+        {
+            Main.Instance.SecondRowTransform.gameObject.SetActive(true);
+        }
+
     }
 
     public void UpdateObjectivesUI()

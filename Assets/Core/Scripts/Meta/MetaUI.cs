@@ -13,6 +13,11 @@ public class MetaUI : MonoBehaviour
     [SerializeField] private GameObject playButton;
     #endregion
     
+    #region VARIABLES
+
+    private Tween playButtonTween;
+    #endregion
+    
     public static MetaUI Instance { get; private set; }
 
     private void Awake()
@@ -22,13 +27,21 @@ public class MetaUI : MonoBehaviour
 
     public void Start()
     {
-        playButton.transform.DOScale(new Vector3(1.1f, 1.1f, 1f), 0.8f)
+        playButtonTween = playButton.transform.DOScale(new Vector3(1.1f, 1.1f, 1f), 0.8f)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutSine);
     }
 
     public void UpdateLevelText()
     {
-        playLevelText.text = "Level " + Player.Instance.PlayerData.CurrentLevel;
+        if (Player.Instance.PlayerData.CurrentLevel == 11)
+        {
+            playButtonTween.Kill();
+            playLevelText.text = "Completed!";
+        }
+        else
+        {
+            playLevelText.text = "Level " + Player.Instance.PlayerData.CurrentLevel;
+        }
     }
 }

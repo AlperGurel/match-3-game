@@ -102,6 +102,7 @@ namespace Match3
 
         public async void LoadMatch()
         {
+            if (Player.Instance.PlayerData.CurrentLevel > 10) return;
             if (isLoading) return;
             isLoading = true;
             await Waiter.WaitForSeconds(0.2f);
